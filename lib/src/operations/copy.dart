@@ -8,7 +8,7 @@ class Copy implements Operation {
   Copy(String from, String path)
       : this.build(JsonPointer(from), JsonPointer(path));
 
-   Copy.build(this.from, this.path);
+  Copy.build(this.from, this.path);
 
   static const name = 'copy';
 

@@ -7,7 +7,7 @@ import 'package:rfc_6902/src/operation.dart';
 class Add implements Operation {
   Add(String path, value) : this.build(JsonPointer(path), value);
 
-   Add.build(this.path, this.value);
+  Add.build(this.path, this.value);
 
   static const name = 'add';
 
