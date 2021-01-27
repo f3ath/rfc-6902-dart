@@ -1,0 +1,3 @@
+[submodule "external/test-suite"]
+	path = external/test-suite
+	url = https://github.com/json-patch/json-patch-tests.git
