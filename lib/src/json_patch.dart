@@ -17,7 +17,7 @@ class JsonPatch with IterableMixin<Operation> {
   /// The patch operations
   final _operations = <Operation>[];
 
-  /// Returns a copy of the [document] with all operations applied consequently.
+  /// Returns a copy of the [document] with all operations applied sequentially.
   /// Throws [OperationFailure] if any operation fails.
   Object? applyTo(document) => fold(document, (doc, op) {
         try {
