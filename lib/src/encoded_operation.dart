@@ -20,6 +20,6 @@ class EncodedOperation {
       final val = _json[key];
       if (val is T) return val;
     }
-    throw FormatException();
+    throw const FormatException();
   }
 }
