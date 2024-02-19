@@ -1,9 +1,3 @@
 export 'package:rfc_6902/src/json_patch.dart';
 export 'package:rfc_6902/src/operation.dart';
 export 'package:rfc_6902/src/operation_failure.dart';
-export 'package:rfc_6902/src/operations/add.dart';
-export 'package:rfc_6902/src/operations/copy.dart';
-export 'package:rfc_6902/src/operations/move.dart';
-export 'package:rfc_6902/src/operations/remove.dart';
-export 'package:rfc_6902/src/operations/replace.dart';
-export 'package:rfc_6902/src/operations/test.dart';

@@ -8,8 +8,6 @@ bool deepEqual(a, b) {
         a.entries
             .every((e) => b.containsKey(e.key) && deepEqual(e.value, b[e.key]));
   }
-  if (a is List && b is List) {
-    return deepEqual(a.asMap(), b.asMap());
-  }
+  if (a is List && b is List) return deepEqual(a.asMap(), b.asMap());
   return false;
 }
