@@ -1,3 +1,5 @@
+import 'package:rfc_6901/rfc_6901.dart';
+
 /// JSON-encoded operation
 class EncodedOperation {
   EncodedOperation(this._json);
@@ -5,9 +7,9 @@ class EncodedOperation {
   /// JSON object
   final Map _json;
 
-  String get path => _get<String>('path');
+  JsonPointer get path => JsonPointer(_get<String>('path'));
 
-  String get from => _get<String>('from');
+  JsonPointer get from => JsonPointer(_get<String>('from'));
 
   String get op => _get<String>('op');
 

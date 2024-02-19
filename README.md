@@ -9,12 +9,12 @@ import 'package:rfc_6902/rfc_6902.dart';
 
 void main() {
   final patch = JsonPatch.build([
-    Test('/a/b/c', 'foo'),
-    Remove('/a/b/c'),
-    Add('/a/b/c', ['foo', 'bar']),
-    Replace('/a/b/c', 42),
-    Move('/a/b/c', '/a/b/d'),
-    Copy('/a/b/d', '/a/b/e'),
+    Test(JsonPointer('/a/b/c'), 'foo'),
+    Remove(JsonPointer('/a/b/c')),
+    Add(JsonPointer('/a/b/c'), ['foo', 'bar']),
+    Replace(JsonPointer('/a/b/c'), 42),
+    Move(JsonPointer('/a/b/c'), JsonPointer('/a/b/d')),
+    Copy(JsonPointer('/a/b/d'), JsonPointer('/a/b/e')),
   ]);
   print(jsonEncode(patch));
 }

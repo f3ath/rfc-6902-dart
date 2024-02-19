@@ -5,8 +5,8 @@ import 'package:test/test.dart';
 void main() {
   group('Failures', () {
     test('Exception contains a "test" failure', () {
-      final addOp = Add('/foo', 42);
-      final testOp = Test('/foo', false);
+      final addOp = Add(JsonPointer('/foo'), 42);
+      final testOp = Test(JsonPointer('/foo'), false);
       final patch = JsonPatch.build([addOp, testOp]);
       expect(
           () => patch.applyTo({}),
@@ -16,7 +16,7 @@ void main() {
               e.reason == null)));
     });
     test('Exception contains an "add" failure', () {
-      final addOp = Add('/foo/bar', 42);
+      final addOp = Add(JsonPointer('/foo/bar'), 42);
       final patch = JsonPatch.build([addOp]);
       expect(
           () => patch.applyTo({}),
