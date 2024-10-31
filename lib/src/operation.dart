@@ -117,7 +117,11 @@ class Replace implements Operation {
   final Object? value;
 
   @override
-  Object? apply(Object? document) => path.write(document, value);
+  Object? apply(Object? document) {
+    // Unlike `path.write`, `path.read` will throw if the path does not exist.
+    path.read(document);
+    return path.write(document, value);
+  }
 
   @override
   Map toJson() => {
