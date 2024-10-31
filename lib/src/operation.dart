@@ -117,7 +117,7 @@ class Replace implements Operation {
   final Object? value;
 
   @override
-  Object? apply(Object? document) => path.add(path.remove(document), value);
+  Object? apply(Object? document) => path.write(document, value);
 
   @override
   Map toJson() => {
