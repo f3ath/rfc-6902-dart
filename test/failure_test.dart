@@ -8,22 +8,38 @@ void main() {
       final addOp = Add(JsonPointer('/foo'), 42);
       final testOp = Test(JsonPointer('/foo'), false);
       final patch = JsonPatch.build([addOp, testOp]);
+
       expect(
-          () => patch.applyTo({}),
-          throwsA(predicate((e) =>
-              e is OperationFailure &&
-              e.operation == testOp &&
-              e.reason == null)));
+        () => patch.applyTo({}),
+        throwsA(
+          isA<OperationFailure>()
+              .having((e) => e.operation, 'operation', testOp)
+              .having((e) => e.reason, 'reason', null)
+              .having(
+                (e) => e.toString(),
+                'toString',
+                'OperationFailure: Failed to perform `Test` at path `/foo`',
+              ),
+        ),
+      );
     });
+
     test('Exception contains an "add" failure', () {
       final addOp = Add(JsonPointer('/foo/bar'), 42);
       final patch = JsonPatch.build([addOp]);
       expect(
-          () => patch.applyTo({}),
-          throwsA(predicate((e) =>
-              e is OperationFailure &&
-              e.operation == addOp &&
-              e.reason is BadRoute)));
+        () => patch.applyTo({}),
+        throwsA(
+          isA<OperationFailure>()
+              .having((e) => e.operation, 'operation', addOp)
+              .having((e) => e.reason, 'reason', isA<BadRoute>())
+              .having(
+                (e) => e.toString(),
+                'toString',
+                'OperationFailure: Failed to perform `Add` at path `/foo/bar` - No value found at /foo',
+              ),
+        ),
+      );
     });
   });
 }
