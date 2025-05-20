@@ -4,7 +4,7 @@ description: JSON Patch (RFC 6902). Implements Add, Copy, Move, Remove, Replace,
 homepage: "https://github.com/f3ath/rfc-6902-dart"
 
 environment:
-  sdk: '>=3.2.0 <4.0.0'
+  sdk: ">=3.2.0 <4.0.0"
 
 dependencies:
   rfc_6901: ^0.2.0
@@ -14,9 +14,8 @@ dev_dependencies:
   test: ^1.21.1
   coverage: ^1.2.0
   check_coverage: ^0.0.4
-  checks: ^0.3.0
 
 cider:
   link_template:
-    tag: 'https://github.com/f3ath/rfc-6902-dart/releases/tag/%tag%'
-    diff: 'https://github.com/f3ath/rfc-6902-dart/compare/%from%...%to%'
+    tag: "https://github.com/f3ath/rfc-6902-dart/releases/tag/%tag%"
+    diff: "https://github.com/f3ath/rfc-6902-dart/compare/%from%...%to%"
