@@ -11,11 +11,8 @@ class OperationFailure implements Exception {
 
   @override
   String toString() {
-    final buffer = StringBuffer('OperationFailure: ');
-    buffer.write(
-      'Failed to perform `${operation.runtimeType}` at path `${operation.path}`',
-    );
-    if (reason != null) buffer.write(' - $reason');
-    return buffer.toString();
+    final description =
+        'OperationFailure: Failed to perform `${operation.runtimeType}` at path `${operation.path}`';
+    return reason != null ? '$description - $reason' : description;
   }
 }
