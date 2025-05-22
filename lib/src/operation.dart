@@ -4,6 +4,10 @@ import 'package:rfc_6902/src/operation_failure.dart';
 
 /// JSON Patch operation
 sealed class Operation {
+  const Operation(this.path);
+
+  final JsonPointer path;
+
   /// Applies the operation to the [document].
   /// Returns modified document.
   Object? apply(Object? document);
@@ -15,12 +19,10 @@ sealed class Operation {
 /// The "add" operation.
 ///
 /// https://tools.ietf.org/html/rfc6902#section-4.1
-class Add implements Operation {
-  Add(this.path, this.value);
+class Add extends Operation {
+  const Add(super.path, this.value);
 
   static const name = 'add';
-
-  final JsonPointer path;
 
   final Object? value;
 
@@ -38,14 +40,12 @@ class Add implements Operation {
 /// The "copy" operation
 ///
 /// https://tools.ietf.org/html/rfc6902#section-4.5
-class Copy implements Operation {
-  Copy(this.from, this.path);
+class Copy extends Operation {
+  const Copy(this.from, super.path);
 
   static const name = 'copy';
 
   final JsonPointer from;
-
-  final JsonPointer path;
 
   @override
   Object? apply(Object? document) => path.add(document, from.read(document));
@@ -61,14 +61,12 @@ class Copy implements Operation {
 /// The "move" operation.
 ///
 /// https://tools.ietf.org/html/rfc6902#section-4.4
-class Move implements Operation {
-  Move(this.from, this.path);
+class Move extends Operation {
+  const Move(this.from, super.path);
 
   static const name = 'move';
 
   final JsonPointer from;
-
-  final JsonPointer path;
 
   @override
   Object? apply(Object? document) {
@@ -87,12 +85,10 @@ class Move implements Operation {
 /// The "remove" operation.
 ///
 /// https://tools.ietf.org/html/rfc6902#section-4.2
-class Remove implements Operation {
-  Remove(this.path);
+class Remove extends Operation {
+  const Remove(super.path);
 
   static const name = 'remove';
-
-  final JsonPointer path;
 
   @override
   Object? apply(Object? document) => path.remove(document);
@@ -107,12 +103,10 @@ class Remove implements Operation {
 /// The "replace" operation.
 ///
 /// https://tools.ietf.org/html/rfc6902#section-4.3
-class Replace implements Operation {
-  Replace(this.path, this.value);
+class Replace extends Operation {
+  const Replace(super.path, this.value);
 
   static const name = 'replace';
-
-  final JsonPointer path;
 
   final Object? value;
 
@@ -134,12 +128,10 @@ class Replace implements Operation {
 /// The "test" operation.
 ///
 /// https://tools.ietf.org/html/rfc6902#section-4.6
-class Test implements Operation {
-  Test(this.path, this.value);
+class Test extends Operation {
+  const Test(super.path, this.value);
 
   static const name = 'test';
-
-  final JsonPointer path;
 
   final Object? value;
 
