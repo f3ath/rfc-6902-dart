@@ -1,5 +1,5 @@
 name: rfc_6902
-version: 0.2.0
+version: 0.3.0
 description: JSON Patch (RFC 6902). Implements Add, Copy, Move, Remove, Replace, Test operations on JSON documents using JSON Pointers.
 homepage: "https://github.com/f3ath/rfc-6902-dart"
 
