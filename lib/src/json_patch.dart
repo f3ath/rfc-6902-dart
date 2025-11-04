@@ -29,7 +29,7 @@ class JsonPatch with IterableMixin<Operation> {
 
   /// Returns a copy of the [document] with all operations applied sequentially.
   /// Throws [OperationFailure] if any operation fails.
-  Object? applyTo(document) => fold(document, (doc, op) {
+  Object? applyTo(Object? document) => fold(document, (doc, op) {
         try {
           return op.apply(doc);
         } on OperationFailure {
